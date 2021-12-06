@@ -15,12 +15,21 @@ public class Usuario
 {
 private String usuario;
 private String password;
-private ArrayList<Permisos>permisos = new ArrayList();
+ private boolean gestionDeNuevosUsuarios,create,select,insert,delete,drop;
 
-    public Usuario(String usuario, String password, ArrayList<Permisos> permisos) {
+public Usuario(){
+    
+}
+
+    public Usuario(String usuario, String password, boolean gestionDeNuevosUsuarios, boolean create, boolean select, boolean insert, boolean delete, boolean drop) {
         this.usuario = usuario;
         this.password = password;
-        this.permisos = permisos;
+        this.gestionDeNuevosUsuarios = gestionDeNuevosUsuarios;
+        this.create = create;
+        this.select = select;
+        this.insert = insert;
+        this.delete = delete;
+        this.drop = drop;
     }
 
     public String getUsuario() {
@@ -39,21 +48,67 @@ private ArrayList<Permisos>permisos = new ArrayList();
         this.password = password;
     }
 
-    public ArrayList<Permisos> getPermisos() {
-        return permisos;
+    public boolean isGestionDeNuevosUsuarios() {
+        return gestionDeNuevosUsuarios;
     }
 
-    public void setPermisos(ArrayList<Permisos> permisos) {
-        this.permisos = permisos;
+    public void setGestionDeNuevosUsuarios(boolean gestionDeNuevosUsuarios) {
+        this.gestionDeNuevosUsuarios = gestionDeNuevosUsuarios;
+    }
+
+    public boolean isCreate() {
+        return create;
+    }
+
+    public void setCreate(boolean create) {
+        this.create = create;
+    }
+
+    public boolean isSelect() {
+        return select;
+    }
+
+    public void setSelect(boolean select) {
+        this.select = select;
+    }
+
+    public boolean isInsert() {
+        return insert;
+    }
+
+    public void setInsert(boolean insert) {
+        this.insert = insert;
+    }
+
+    public boolean isDelete() {
+        return delete;
+    }
+
+    public void setDelete(boolean delete) {
+        this.delete = delete;
+    }
+
+    public boolean isDrop() {
+        return drop;
+    }
+
+    public void setDrop(boolean drop) {
+        this.drop = drop;
     }
 
     @Override
     public String toString() {
         return "Usuario{" + "usuario=" + usuario 
-                + ", password=" + password 
-                + ", permisos=" + permisos + '}';
+                + ", password=" + password
+                + ", gestionDeNuevosUsuarios=" + gestionDeNuevosUsuarios 
+                + ", create=" + create 
+                + ", select=" + select 
+                + ", insert=" + insert 
+                + ", delete=" + delete
+                + ", drop=" + drop + '}';
     }
 
+   
 
 }
 

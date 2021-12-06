@@ -1,12 +1,12 @@
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 /**
  *
  * @author jcoq2
@@ -45,16 +45,17 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        userTextField = new javax.swing.JTextField();
+        passTextField = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        jCheckBox1 = new javax.swing.JCheckBox();
-        jCheckBox2 = new javax.swing.JCheckBox();
-        jCheckBox3 = new javax.swing.JCheckBox();
-        jCheckBox4 = new javax.swing.JCheckBox();
-        jCheckBox5 = new javax.swing.JCheckBox();
-        jCheckBox6 = new javax.swing.JCheckBox();
-        jButton1 = new javax.swing.JButton();
+        gestionUsuarios_Cb = new javax.swing.JCheckBox();
+        create_Cb = new javax.swing.JCheckBox();
+        select_Cb = new javax.swing.JCheckBox();
+        insert_Cb = new javax.swing.JCheckBox();
+        delete_Cb = new javax.swing.JCheckBox();
+        drop_Cb = new javax.swing.JCheckBox();
+        registrarseButton2 = new javax.swing.JButton();
+        pruebaBoton = new javax.swing.JButton();
         jDialog2 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         sistemasUsuariosLabel = new javax.swing.JLabel();
@@ -148,21 +149,33 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         jLabel7.setFont(new java.awt.Font("Dialog", 1, 18)); // NOI18N
         jLabel7.setText("Permisos");
 
-        jCheckBox1.setText("Gestion de Nuevos Usuarios");
+        gestionUsuarios_Cb.setText("Gestion de Nuevos Usuarios");
 
-        jCheckBox2.setText("Create");
+        create_Cb.setText("Create");
 
-        jCheckBox3.setText("Select");
+        select_Cb.setText("Select");
 
-        jCheckBox4.setText("Insert");
+        insert_Cb.setText("Insert");
 
-        jCheckBox5.setText("Delete");
+        delete_Cb.setText("Delete");
 
-        jCheckBox6.setText("Drop");
+        drop_Cb.setText("Drop");
 
-        jButton1.setBackground(new java.awt.Color(0, 255, 0));
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Registrarse");
+        registrarseButton2.setBackground(new java.awt.Color(0, 255, 0));
+        registrarseButton2.setForeground(new java.awt.Color(255, 255, 255));
+        registrarseButton2.setText("Registrarse");
+        registrarseButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                registrarseButton2ActionPerformed(evt);
+            }
+        });
+
+        pruebaBoton.setText("jButton1");
+        pruebaBoton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                pruebaBotonActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -179,25 +192,25 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addGap(0, 35, Short.MAX_VALUE)
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 137, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(48, 48, 48))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jCheckBox4)
-                            .addComponent(jCheckBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(insert_Cb)
+                            .addComponent(gestionUsuarios_Cb, javax.swing.GroupLayout.PREFERRED_SIZE, 186, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(select_Cb, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jCheckBox6)
+                                .addComponent(drop_Cb)
                                 .addGap(24, 24, 24))
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(jCheckBox2)
+                                .addComponent(create_Cb)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jCheckBox5)
+                                .addComponent(delete_Cb)
                                 .addGap(17, 17, 17))))))
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -209,7 +222,10 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
                         .addComponent(jLabel4))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(152, 152, 152)
-                        .addComponent(jButton1)))
+                        .addComponent(registrarseButton2))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(pruebaBoton)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel3Layout.setVerticalGroup(
@@ -217,29 +233,31 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
-                .addGap(58, 58, 58)
+                .addGap(1, 1, 1)
+                .addComponent(pruebaBoton)
+                .addGap(32, 32, 32)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(passTextField, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
                 .addComponent(jLabel7)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jCheckBox3, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(select_Cb, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jCheckBox1)
-                        .addComponent(jCheckBox6)))
+                        .addComponent(gestionUsuarios_Cb)
+                        .addComponent(drop_Cb)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jCheckBox2)
-                    .addComponent(jCheckBox4)
-                    .addComponent(jCheckBox5))
+                    .addComponent(create_Cb)
+                    .addComponent(insert_Cb)
+                    .addComponent(delete_Cb))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(registrarseButton2)
                 .addGap(9, 9, 9))
         );
 
@@ -363,6 +381,66 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_registrarseButtonActionPerformed
 
+    private void registrarseButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registrarseButton2ActionPerformed
+        UserManagement validacion = new UserManagement();
+        boolean gestionDeNuevosUsuarios = false;
+        boolean create = false;
+        boolean select = false;
+        boolean insert = false;
+        boolean delete = false;
+        boolean drop = false;
+        
+            String username = userTextField.getText();
+            String password = passTextField.getText();
+            if (gestionUsuarios_Cb.isSelected()) {
+                gestionDeNuevosUsuarios = true;
+            }
+             if (create_Cb.isSelected()) {
+                create = true;
+            }
+             if (select_Cb.isSelected()) {
+                select = true;
+            }
+             if (insert_Cb.isSelected()) {
+                insert = true;
+            }
+            if (delete_Cb.isSelected()) {
+                delete = true;
+            }
+            if (drop_Cb.isSelected()) {
+                drop = true;
+            }
+            boolean usuarioExiste = validacion.checkUser(usuarios, username);
+            boolean userVacio = userTextField.getText().isEmpty();
+            boolean passVacio = passTextField.getText().isEmpty();
+            if(usuarioExiste == true && userVacio == false && passVacio == false){
+            usuarios.add(new Usuario(username, password, 
+                    gestionDeNuevosUsuarios, create, select,
+                    insert, delete, drop));
+            }else{
+                JOptionPane.showMessageDialog(this, "Hubo un error al registrar los datos");
+            }
+            
+            userTextField.setText("");
+            passTextField.setText("");
+            gestionUsuarios_Cb.setSelected(false);
+            create_Cb.setSelected(false);
+            select_Cb.setSelected(false);
+            insert_Cb.setSelected(false);
+            delete_Cb.setSelected(false);
+            drop_Cb.setSelected(false);
+
+       
+
+        // TODO add your handling code here:
+    }//GEN-LAST:event_registrarseButton2ActionPerformed
+
+    private void pruebaBotonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_pruebaBotonActionPerformed
+        UserManagement listar = new UserManagement();
+        listar.listarUsuarios(usuarios);
+        // TODO add your handling code here:
+    }//GEN-LAST:event_pruebaBotonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -401,14 +479,12 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDialog RegistrarseDialog;
     private javax.swing.JLabel baseDeDatosLabel;
+    private javax.swing.JCheckBox create_Cb;
+    private javax.swing.JCheckBox delete_Cb;
+    private javax.swing.JCheckBox drop_Cb;
+    private javax.swing.JCheckBox gestionUsuarios_Cb;
     private javax.swing.JLabel goBackLabel;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JCheckBox jCheckBox1;
-    private javax.swing.JCheckBox jCheckBox2;
-    private javax.swing.JCheckBox jCheckBox3;
-    private javax.swing.JCheckBox jCheckBox4;
-    private javax.swing.JCheckBox jCheckBox5;
-    private javax.swing.JCheckBox jCheckBox6;
+    private javax.swing.JCheckBox insert_Cb;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -420,19 +496,21 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JButton logInButton;
     private javax.swing.JToggleButton logInButton2;
     private javax.swing.JDialog logInDialog;
+    private javax.swing.JTextField passTextField;
     private javax.swing.JTextField passwordTextField;
+    private javax.swing.JButton pruebaBoton;
     private javax.swing.JButton registrarseButton;
+    private javax.swing.JButton registrarseButton2;
+    private javax.swing.JCheckBox select_Cb;
     private javax.swing.JLabel sistemasUsuariosLabel;
+    private javax.swing.JTextField userTextField;
     private javax.swing.JTextField usernameTextField;
     // End of variables declaration//GEN-END:variables
 
-//ArrayList<Usuario>usuarios = new ArrayList();
-//ArrayList<Permisos>permisos = new ArrayList();
-
+    ArrayList<Usuario> usuarios = new ArrayList();
+    
 
 }

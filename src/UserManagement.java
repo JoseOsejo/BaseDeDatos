@@ -33,4 +33,9 @@ public boolean checkUser(ArrayList<Usuario>users,String user){
     }
     return true;
 }
+public void listarUsuarios(ArrayList<Usuario>users){
+    for(Usuario user: users){
+        System.out.println(user);
+    }
+}
 }
