@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author jcoq2
  */
-public class Usuario 
+public class Usuario implements java.io.Serializable 
 {
 private String usuario;
 private String password;
@@ -111,5 +111,6 @@ public Usuario(){
    
 
 }
+
 
     

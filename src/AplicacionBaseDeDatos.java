@@ -56,6 +56,7 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         drop_Cb = new javax.swing.JCheckBox();
         registrarseButton2 = new javax.swing.JButton();
         pruebaBoton = new javax.swing.JButton();
+        goBackLabel1 = new javax.swing.JLabel();
         jDialog2 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         sistemasUsuariosLabel = new javax.swing.JLabel();
@@ -71,6 +72,11 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         jLabel3.setText("Password");
 
         logInButton2.setText("Log In");
+        logInButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                logInButton2ActionPerformed(evt);
+            }
+        });
 
         passwordTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -177,6 +183,13 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
             }
         });
 
+        goBackLabel1.setIcon(new javax.swing.ImageIcon("C:\\Users\\jcoq2\\Videos\\atras.png")); // NOI18N
+        goBackLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                goBackLabel1MouseClicked(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -215,27 +228,34 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(141, 141, 141)
-                        .addComponent(jLabel7))
+                        .addComponent(goBackLabel1)
+                        .addGap(98, 98, 98)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(pruebaBoton))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(138, 138, 138)
-                        .addComponent(jLabel4))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(152, 152, 152)
-                        .addComponent(registrarseButton2))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(pruebaBoton)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(141, 141, 141)
+                                .addComponent(jLabel7))
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addGap(152, 152, 152)
+                                .addComponent(registrarseButton2)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel4)
-                .addGap(1, 1, 1)
-                .addComponent(pruebaBoton)
-                .addGap(32, 32, 32)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel4))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(23, 23, 23)
+                        .addComponent(pruebaBoton))
+                    .addComponent(goBackLabel1))
+                .addGap(46, 46, 46)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
                     .addComponent(jLabel6))
@@ -389,48 +409,46 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         boolean insert = false;
         boolean delete = false;
         boolean drop = false;
-        
-            String username = userTextField.getText();
-            String password = passTextField.getText();
-            if (gestionUsuarios_Cb.isSelected()) {
-                gestionDeNuevosUsuarios = true;
-            }
-             if (create_Cb.isSelected()) {
-                create = true;
-            }
-             if (select_Cb.isSelected()) {
-                select = true;
-            }
-             if (insert_Cb.isSelected()) {
-                insert = true;
-            }
-            if (delete_Cb.isSelected()) {
-                delete = true;
-            }
-            if (drop_Cb.isSelected()) {
-                drop = true;
-            }
-            boolean usuarioExiste = validacion.checkUser(usuarios, username);
-            boolean userVacio = userTextField.getText().isEmpty();
-            boolean passVacio = passTextField.getText().isEmpty();
-            if(usuarioExiste == true && userVacio == false && passVacio == false){
-            usuarios.add(new Usuario(username, password, 
+
+        String username = userTextField.getText();
+        String password = passTextField.getText();
+        if (gestionUsuarios_Cb.isSelected()) {
+            gestionDeNuevosUsuarios = true;
+        }
+        if (create_Cb.isSelected()) {
+            create = true;
+        }
+        if (select_Cb.isSelected()) {
+            select = true;
+        }
+        if (insert_Cb.isSelected()) {
+            insert = true;
+        }
+        if (delete_Cb.isSelected()) {
+            delete = true;
+        }
+        if (drop_Cb.isSelected()) {
+            drop = true;
+        }
+        boolean usuarioExiste = validacion.checkUser(usuarios, username);
+        boolean userVacio = userTextField.getText().isEmpty();
+        boolean passVacio = passTextField.getText().isEmpty();
+        if (usuarioExiste == true && userVacio == false && passVacio == false) {
+            usuarios.add(new Usuario(username, password,
                     gestionDeNuevosUsuarios, create, select,
                     insert, delete, drop));
-            }else{
-                JOptionPane.showMessageDialog(this, "Hubo un error al registrar los datos");
-            }
-            
-            userTextField.setText("");
-            passTextField.setText("");
-            gestionUsuarios_Cb.setSelected(false);
-            create_Cb.setSelected(false);
-            select_Cb.setSelected(false);
-            insert_Cb.setSelected(false);
-            delete_Cb.setSelected(false);
-            drop_Cb.setSelected(false);
+        } else {
+            JOptionPane.showMessageDialog(this, "Hubo un error al registrar los datos");
+        }
 
-       
+        userTextField.setText("");
+        passTextField.setText("");
+        gestionUsuarios_Cb.setSelected(false);
+        create_Cb.setSelected(false);
+        select_Cb.setSelected(false);
+        insert_Cb.setSelected(false);
+        delete_Cb.setSelected(false);
+        drop_Cb.setSelected(false);
 
         // TODO add your handling code here:
     }//GEN-LAST:event_registrarseButton2ActionPerformed
@@ -440,6 +458,27 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         listar.listarUsuarios(usuarios);
         // TODO add your handling code here:
     }//GEN-LAST:event_pruebaBotonActionPerformed
+
+    private void logInButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_logInButton2ActionPerformed
+        UserManagement logIn = new UserManagement();
+        String user, password;
+        user = usernameTextField.getText();
+        password = passwordTextField.getText();
+        boolean ingreso = logIn.logIn(usuarios, user, password);
+        if (ingreso == true) {
+            System.out.println("Log In exitoso");
+        } else {
+            System.out.println("Error");
+        }
+        // TODO add your handling code here:
+    }//GEN-LAST:event_logInButton2ActionPerformed
+
+    private void goBackLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_goBackLabel1MouseClicked
+        RegistrarseDialog.setVisible(false);
+        this.setVisible(true);
+        // TODO add your handling code here:
+        // TODO add your handling code here:
+    }//GEN-LAST:event_goBackLabel1MouseClicked
 
     /**
      * @param args the command line arguments
@@ -484,6 +523,7 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
     private javax.swing.JCheckBox drop_Cb;
     private javax.swing.JCheckBox gestionUsuarios_Cb;
     private javax.swing.JLabel goBackLabel;
+    private javax.swing.JLabel goBackLabel1;
     private javax.swing.JCheckBox insert_Cb;
     private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
@@ -511,6 +551,5 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
     // End of variables declaration//GEN-END:variables
 
     ArrayList<Usuario> usuarios = new ArrayList();
-    
 
 }
