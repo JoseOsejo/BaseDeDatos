@@ -470,6 +470,8 @@ public class AplicacionBaseDeDatos extends javax.swing.JFrame {
         } else {
             System.out.println("Error");
         }
+        usernameTextField.setText("");
+        passwordTextField.setText("");
         // TODO add your handling code here:
     }//GEN-LAST:event_logInButton2ActionPerformed
 
